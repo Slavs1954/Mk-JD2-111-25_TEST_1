@@ -14,7 +14,7 @@ import java.util.Enumeration;
 
 @WebServlet(urlPatterns = "/playlist")
 public class PlaylistServlet extends HttpServlet {
-    private final IPlaylistService service = new PlaylistService();
+    private final IPlaylistService service = PlaylistService.getInstance();
 
     private boolean ensurePlaylistExists(HttpServletRequest req) {
         if (service.getPlaylist(req.getSession().getId()) == null) {
@@ -44,7 +44,7 @@ public class PlaylistServlet extends HttpServlet {
                 req.getSession().setAttribute("email", req.getParameter(param));
             }
 
-            if (param.equals("addTrack")) {
+            if (param.equals("track")) {
                 service.getPlaylist(req.getSession().getId()).addTrack(req.getParameter(param));
             }
         }
@@ -60,14 +60,7 @@ public class PlaylistServlet extends HttpServlet {
         while (params.hasMoreElements()) {
             String param = params.nextElement();
 
-            if(param.equals("email")) {
-                req.getSession().setAttribute("email", req.getParameter(param));
-            }
-
-            if (param.equals("addTrack")) {
-                service.getPlaylist(req.getSession().getId()).addTrack(req.getParameter(param));
-            }
-            if (param.equals("delTrack")) {
+            if (param.equals("track")) {
                 service.getPlaylist(req.getSession().getId()).deleteTrack(req.getParameter(param));
             }
 

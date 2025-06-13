@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/content")
 public class ContentServlet extends HttpServlet {
 
-    private final IPlaylistService service = new PlaylistService();
+    private final IPlaylistService service = PlaylistService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
