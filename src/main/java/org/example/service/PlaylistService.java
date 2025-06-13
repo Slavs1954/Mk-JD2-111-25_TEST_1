@@ -19,10 +19,8 @@ public class PlaylistService implements IPlaylistService {
 
     @Override
     public Playlist getPlaylist(String sessionID) {
-        Iterator<Playlist> playlistIterator = storage.getAll().iterator();
-        while (playlistIterator.hasNext()) {
-            Playlist playlist = playlistIterator.next();
-            if (playlist.getSessionID() == sessionID) {
+        for (Playlist playlist : storage.getAll()) {
+            if (Objects.equals(playlist.getSessionID(), sessionID)) {
                 return playlist;
             }
         }

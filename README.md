@@ -1,7 +1,9 @@
 # Playlist servlet
 ## Supported atributes
+### doPost
 - email - set email on your playlist
 - addTrack - add track to your playlist
+### doDelete
 - delTrack - remove track from your playlist
 ## Supported urls
 - /playlist - apply attributes here (email, addTrack, delTrack)

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Playlist {
-    List<String> tracks;
-    String sessionID;
+    private List<String> tracks;
+    private final String sessionID;
 
     public Playlist(String sessionID) {
         this.sessionID = sessionID;
-        tracks = new ArrayList<>();
+        this.tracks = new ArrayList<>();
     }
 
     public List<String> getTracks() {

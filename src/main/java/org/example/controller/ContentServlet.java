@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import org.example.dto.Playlist;
 import org.example.service.PlaylistService;
 import org.example.service.api.IPlaylistService;
 import jakarta.servlet.ServletException;
@@ -28,13 +27,11 @@ public class ContentServlet extends HttpServlet {
             return;
         }
 
-        var tracks = service.getPlaylist(req.getSession().getId()).getTracks().iterator();
-
         writer.write("<html><body>");
         writer.write("saved email:" + req.getSession().getAttribute("email") + "<br>");
         writer.write("<h1>Your Playlist<h1><h1><ul>");
-        while (tracks.hasNext()) {
-            writer.write("<li>" + tracks.next() + "</li>");
+        for(String track : service.getPlaylist(req.getSession().getId()).getTracks()) {
+            writer.write("<li>" + track + "</li>");
         }
 
         writer.write("</ul></body></html>");
